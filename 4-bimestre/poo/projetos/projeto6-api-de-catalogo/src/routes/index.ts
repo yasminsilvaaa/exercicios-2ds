@@ -1,17 +1,20 @@
-import  express, { Router }  from "express"
+import express from "express"
 import produtosRouter from "./produtos"
-import voosRouter from "./voos"
-import pingRouter from "./ping"
 
-const router = express.Router()// criar roteador
-router.use("/ping", pingRouter)
-router.use("/voss", voosRouter)
+const router = express.Router()
+
+//prefixo de rota
 router.use("/produtos", produtosRouter)
 
-router.get("/", (req, res) => {
-let nome: string = "John"
-let idade: number =  22
-res.json({nome , idade})
+router.get("/ping", (req,res)=>{
+  res.json({ pong:true})
 })
+
+
+router.get("/", (req, res) => {
+  let nome:string = "Everson"
+  let idade: number = 34
+  res.json({ nome, idade })
+});
 
 export default router
